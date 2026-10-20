@@ -22,31 +22,18 @@ $$('.aba').forEach(b => b.addEventListener('click', () => {
   $$('.painel-aba').forEach(p => p.classList.toggle('ativo', p.dataset.painel === b.dataset.aba));
 }));
 
-/* Mapa de blocos: [sigla, nome, coluna, linha, atendido?] */
+/* Estados atendidos pelo Triio */
 const UF = [
-  ['RR','Roraima',1,0],['AP','Amapá',2,0],
-  ['AM','Amazonas',1,1,1],['PA','Pará',2,1,1],['MA','Maranhão',3,1],['PI','Piauí',4,1],['CE','Ceará',5,1,1],['RN','Rio Grande do Norte',6,1],
-  ['AC','Acre',0,2],['RO','Rondônia',1,2],['MT','Mato Grosso',2,2,1],['TO','Tocantins',3,2],['BA','Bahia',4,2,1],['PE','Pernambuco',5,2,1],['PB','Paraíba',6,2],
-  ['MS','Mato Grosso do Sul',1,3,1],['GO','Goiás',2,3,1],['DF','Distrito Federal',3,3,1],['MG','Minas Gerais',4,3,1],['AL','Alagoas',5,3],['SE','Sergipe',6,3],
-  ['PR','Paraná',1,4,1],['SP','São Paulo',2,4,1],['RJ','Rio de Janeiro',3,4,1],['ES','Espírito Santo',4,4,1],
-  ['SC','Santa Catarina',1,5,1],['RS','Rio Grande do Sul',1,6,1]
+  ['RR','Roraima',false],['AP','Amapá',false],
+  ['AM','Amazonas',true],['PA','Pará',true],['MA','Maranhão',false],['PI','Piauí',false],['CE','Ceará',true],['RN','Rio Grande do Norte',false],
+  ['AC','Acre',false],['RO','Rondônia',false],['MT','Mato Grosso',true],['TO','Tocantins',false],['BA','Bahia',true],['PE','Pernambuco',true],['PB','Paraíba',false],
+  ['MS','Mato Grosso do Sul',true],['GO','Goiás',true],['DF','Distrito Federal',true],['MG','Minas Gerais',true],['AL','Alagoas',false],['SE','Sergipe',false],
+  ['PR','Paraná',true],['SP','São Paulo',true],['RJ','Rio de Janeiro',true],['ES','Espírito Santo',true],
+  ['SC','Santa Catarina',true],['RS','Rio Grande do Sul',true]
 ];
-const tiles = $('#tiles'), chips = $('#chips'), dica = $('#dica');
-UF.forEach(([sigla, nome, c, l, on]) => {
-  const t = document.createElement('div');
-  t.className = 'tile' + (on ? ' ativo' : '');
-  t.textContent = sigla;
-  t.style.gridColumn = c + 1;
-  t.style.gridRow = l + 1;
-  t.addEventListener('pointermove', e => {
-    dica.textContent = nome + (on ? ' · com arenas Triio' : '');
-    dica.style.left = e.clientX + 'px';
-    dica.style.top = e.clientY + 'px';
-    dica.classList.add('visivel');
-  });
-  t.addEventListener('pointerleave', () => dica.classList.remove('visivel'));
-  tiles.appendChild(t);
-  if (on) {
+const chips = $('#chips');
+UF.forEach(([sigla, nome, atendido]) => {
+  if (atendido) {
     const chip = document.createElement('span');
     chip.className = 'chip';
     chip.textContent = nome;

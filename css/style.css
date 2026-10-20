@@ -41,7 +41,7 @@ p{margin:0 0 16px;max-width:65ch}
 .hero{position:relative;overflow:hidden;padding:170px 0 90px}
 .quadra{position:absolute;inset:auto 0 -10% 0;height:70%;background:repeating-linear-gradient(90deg,rgba(154,161,172,.16) 0 1px,transparent 1px 90px),repeating-linear-gradient(0deg,rgba(154,161,172,.16) 0 1px,transparent 1px 70px);transform:perspective(620px) rotateX(64deg);transform-origin:bottom center;-webkit-mask-image:linear-gradient(to top,#000 5%,transparent 85%);mask-image:linear-gradient(to top,#000 5%,transparent 85%);pointer-events:none}
 .brilho{position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:760px;height:560px;background:radial-gradient(ellipse at center,rgba(253,84,1,.2),transparent 68%);filter:blur(18px);pointer-events:none}
-.bolinhas{position:absolute;right:0;top:50%;transform:translateY(-50%);width:min(400px,34vw);height:auto;pointer-events:none}
+.bolinhas{position:absolute;right:9%;top:50%;transform:translateY(-50%) rotate(270deg);width:min(400px,34vw);height:auto;pointer-events:none}
 .hero .container{position:relative;z-index:2}
 .selo{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:999px;background:rgba(253,84,1,.1);border:1px solid rgba(253,84,1,.32);font-size:.82rem;font-weight:600;color:var(--laranja-sol);margin-bottom:26px}
 .pulso{width:8px;height:8px;border-radius:50%;background:var(--verde-zap);animation:pulsar 2.2s infinite}
@@ -110,12 +110,8 @@ p{margin:0 0 16px;max-width:65ch}
 
 /* MAPA DE BLOCOS */
 .bloco-mapa{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.tiles{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(7,1fr);gap:8px;max-width:520px;margin:0 auto;aspect-ratio:8/7}
-.tile{display:grid;place-items:center;border-radius:10px;background:var(--grafite-alto);color:var(--cinza);font-weight:700;font-size:.85rem;transition:filter .2s}
-.tile.ativo{background:var(--laranja);color:#fff;cursor:pointer}
-.tile:hover{filter:brightness(1.25)}
-.dica{position:fixed;z-index:60;padding:8px 13px;border-radius:9px;background:var(--osso);color:var(--carvao);font-size:.78rem;font-weight:700;white-space:nowrap;pointer-events:none;opacity:0;transform:translate(-50%,-140%);transition:opacity .15s}
-.dica.visivel{opacity:1}
+.tiles{width:min(100%,560px);margin:0 auto}
+.tiles img{width:100%;height:auto}
 .legenda{display:flex;flex-wrap:wrap;gap:18px;margin:22px 0}
 .legenda div{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--cinza-claro)}
 .legenda i{width:12px;height:12px;border-radius:3px}
